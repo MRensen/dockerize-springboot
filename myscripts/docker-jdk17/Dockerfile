@@ -1,3 +1,4 @@
+# version 3.1
 # 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts/dockerize.ps1'
 FROM eclipse-temurin:17-jdk-alpine
 VOLUME /tmp
