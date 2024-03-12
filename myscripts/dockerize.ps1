@@ -2,9 +2,9 @@
 
 $jdk = $args[0]
 
-"applying 'mvn package -DskipTests' on project..."
+"Applying 'mvn package -DskipTests' on project..."
 ./mvnw package -DskipTests
-"copying docker-compose and Dockerfile from C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts..."
+"Copying docker-compose and Dockerfile from C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts..."
 if($jdk -eq 21)
 {
 	"JDK 21"

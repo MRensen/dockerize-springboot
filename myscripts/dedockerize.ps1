@@ -1,2 +1,2 @@
-"running 'docker compose down'..."
+"Running 'docker compose down'..."
 docker compose down
