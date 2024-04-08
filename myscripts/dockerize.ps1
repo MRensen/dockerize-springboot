@@ -1,10 +1,13 @@
-# version 3.1
+# version 3.2
 
 $jdk = $args[0]
 
-"Applying 'mvn package -DskipTests' on project..."
+"setting up maven wrapper..."
+mvn -N wrapper:wrapper
+
+"applying 'mvn package -DskipTests' on project..."
 ./mvnw package -DskipTests
-"Copying docker-compose and Dockerfile from C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts..."
+"copying docker-compose and Dockerfile from C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts..."
 if($jdk -eq 21)
 {
 	"JDK 21"
