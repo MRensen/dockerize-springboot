@@ -1,13 +1,14 @@
-Version 3.1
+Version 3.2
 
 # INSTALLATIE:
 
-1. Download Docker Desktop
-2. plak de 'myscripts'-map in _windows\system32\windowspowershell\v1.0_
-3. open profile.ps1 in _windows\system32\windowspowershell\v1.0_
-4. voeg de regel toe: `Set-Alias -Name dockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts/dockerize.ps1'
-5. (Optioneel) Voeg ook `Set-Alias -Name dedockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts/dedockerize.ps1'` toe aan profile.ps1
-6. herstart powershell
+1. Zorg dat java en maven op je computer geinstalleerd staan en op je PATH staan. (Instructies:[java](https://www.java.com/nl/download/help/path.html), [maven](https://www.baeldung.com/install-maven-on-windows-linux-mac))
+2. Download Docker Desktop
+3. plak de 'myscripts'-map in _windows\system32\windowspowershell\v1.0_
+4. open profile.ps1 in _windows\system32\windowspowershell\v1.0_
+5. voeg de regel toe: `Set-Alias -Name dockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts/dockerize.ps1'
+6. (Optioneel) Voeg ook `Set-Alias -Name dedockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts/dedockerize.ps1'` toe aan profile.ps1
+7. herstart powershell
 
 # GEBRUIK:
 
