@@ -68,3 +68,10 @@ Een makkelijke manier om Powershell te openen in de root folder van een springbo
 7. In de nieuwe "command" key, dubbelklik op de "(Default)" entry en zet die waarde naar `powershell.exe -noexit -command Set-Location -literalPath '%V'`
 
 Wanneer je nu een nieuwe map opent en `shift + rechter muisknop` doet, dan zie je als het goed is de optie "Open PowerShell here"
+
+# TROUBLESHOOTING
+
+- De volgende error: 
+`java.lang.NoSuchFieldError: Class com.sun.tools.javac.tree.JCTree$JCImport does not have member field 'com.sun.tools.javac.tree.JCTree qualid'`
+Kan veroorzaakt worden door een oude lombok versie. Update de lombok dependency in de pom.xml van het project naar versie 1.18.32 of hoger
+  
