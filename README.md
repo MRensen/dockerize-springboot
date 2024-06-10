@@ -6,8 +6,9 @@ Version 3.2
 2. Download Docker Desktop
 3. plak de 'myscripts'-map in _windows\system32\windowspowershell\v1.0_
 4. open profile.ps1 in _windows\system32\windowspowershell\v1.0_
-5. voeg de regel toe: `Set-Alias -Name dockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts/dockerize.ps1'
-6. (Optioneel) Voeg ook `Set-Alias -Name dedockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts/dedockerize.ps1'` toe aan profile.ps1
+5. voeg de regel toe: `Set-Alias -Name dockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\dockerize.ps1'
+6. (Optioneel) Voeg ook `Set-Alias -Name dedockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\dedockerize.ps1'` toe aan profile.ps1.
+7. (Optioneel) Voeg ook `Set-Alias -Name authreset -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\authreset.ps1`
 7. herstart powershell
 
 # GEBRUIK:
@@ -19,6 +20,11 @@ Version 3.2
 4. Vouw in Docker Desktop de nieuw gemaakte collectie open, ga naar de 'app' container. 
   Wanneer het icoontje van deze container groen is, is de applicatie gestart. Tevens kun je hier de log van de Spring Boot applicatie zien.
 5. Ga naar de 'db' container en klik het 'terminal' tabblad. Hier kun je met psql de database uitlezen. 
+
+- Het "dedockerize" commando is een makkelijke manier om je docker instance weer af te sluiten als je klaar bent. 
+Dit doe je door een powershell venster te openen in de root map van het project (of het zelfde powershell venster dat je voor "dockerize" gebruikt hebt) en daar "dedockerize" uit te voeren.
+- Het "authreset" commando is een makkelijke manier om alle auth headers van je postman collectie op default te zetten (inherit from parent).
+Je gebruikt dit commando door het in powershell uit te voeren in de folder waar het .postman_collection.json file staat.
 
 # PSQL
   Log in bij psql met: 
