@@ -1,4 +1,4 @@
-Version 3.2
+Version 3.3
 
 # INSTALLATIE:
 
@@ -81,3 +81,6 @@ Wanneer je nu een nieuwe map opent en `shift + rechter muisknop` doet, dan zie j
 `java.lang.NoSuchFieldError: Class com.sun.tools.javac.tree.JCTree$JCImport does not have member field 'com.sun.tools.javac.tree.JCTree qualid'`
 Kan veroorzaakt worden door een oude lombok versie. Update de lombok dependency in de pom.xml van het project naar versie 1.18.32 of hoger
   
+# Changelog
+- v3.3: De compose file kopieert nu ook de /src map naar de container, zodat de applicatie daar toegang toe heeft. 
+Projecten met hardcoded file paths crashen hierdoor niet meer.

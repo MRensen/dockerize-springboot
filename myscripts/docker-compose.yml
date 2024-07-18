@@ -17,6 +17,7 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
     volumes:
       - /tmp/uploads:/uploads
+      - ./src:/src
           
   db:
     image: 'postgres:13.1-alpine'
