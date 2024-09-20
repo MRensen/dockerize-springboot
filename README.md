@@ -1,4 +1,4 @@
-Version 3.3
+Version 3.4
 
 # INSTALLATIE:
 
@@ -16,15 +16,16 @@ Version 3.3
 1. open powershell in de root folder van een SpringBoot project (zie ook [bonus](#BONUS))
   (de map waar o.a. pom.xml en 'src' in staan)
 2. type: 'dockerize' (sluit het powershell venster niet)
-3. Voeg optioneel een parameter toe voor de JDK, zoals 'dockerize 21'. Op dit moment wordt alleen JDK 21 ondersteund en JDK 17 is de default.
+3. Voeg optioneel een parameter toe voor de JDK, zoals 'dockerize -jdk 21'. Op dit moment wordt alleen JDK 21 ondersteund en JDK 17 is de default.
+   Voeg optioneel een parameter to voor het SQL dialect, zoals 'dockerize -sql mysql'. Op dit moment wordt alleen MySql en PostgreSql ondersteund, deze laatste is de default.
+   Je kunt ook beide flags toevoegen.
 4. Vouw in Docker Desktop de nieuw gemaakte collectie open, ga naar de 'app' container. 
   Wanneer het icoontje van deze container groen is, is de applicatie gestart. Tevens kun je hier de log van de Spring Boot applicatie zien.
 5. Ga naar de 'db' container en klik het 'terminal' tabblad. Hier kun je met psql de database uitlezen. 
 
 - Het "dedockerize" commando is een makkelijke manier om je docker instance weer af te sluiten als je klaar bent. 
 Dit doe je door een powershell venster te openen in de root map van het project (of het zelfde powershell venster dat je voor "dockerize" gebruikt hebt) en daar "dedockerize" uit te voeren.
-- Het "authreset" commando is een makkelijke manier om alle auth headers van je postman collectie op default te zetten (inherit from parent).
-Je gebruikt dit commando door het in powershell uit te voeren in de folder waar het .postman_collection.json file staat.
+
 
 # PSQL
   Log in bij psql met: 
@@ -84,3 +85,5 @@ Kan veroorzaakt worden door een oude lombok versie. Update de lombok dependency 
 # Changelog
 - v3.3: De compose file kopieert nu ook de /src map naar de container, zodat de applicatie daar toegang toe heeft. 
 Projecten met hardcoded file paths crashen hierdoor niet meer.
+- v3.4: Het ps1 script geeft nu de optie om zowel jdk als sql aan te passen.
+        "authreset" verwijderd

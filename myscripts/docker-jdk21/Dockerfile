@@ -4,5 +4,6 @@ FROM eclipse-temurin:21-jdk-alpine
 VOLUME /tmp
 EXPOSE 8080
 EXPOSE 5432
+EXPOSE 3307
 COPY target/*.jar application.jar
 ENTRYPOINT ["java", "-jar", "application.jar"]
