@@ -87,3 +87,4 @@ Kan veroorzaakt worden door een oude lombok versie. Update de lombok dependency 
 Projecten met hardcoded file paths crashen hierdoor niet meer.
 - v3.4: Het ps1 script geeft nu de optie om zowel jdk als sql aan te passen.
         "authreset" verwijderd
+- V4.0: Initialisatie van Maven gebeurt nu in de dockerfile in plaats van lokaal. De installatie van Maven op je lokale pc is daarmee wellicht niet meer nodig.

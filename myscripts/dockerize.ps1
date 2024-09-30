@@ -26,8 +26,8 @@
 
 .NOTES
     Author: Mark Rensen
-    Date: 2024-09-20
-	Version: 3.3
+    Date: 2024-09-30
+	Version: 4.0
 #>
 
 Param(
@@ -38,11 +38,13 @@ Param(
     [string]$sql = "postgresql" # Optional flag with a default value
 )
 
-"setting up maven wrapper..."
-mvn -N wrapper:wrapper
+#Deze twee bewerkingen worden nu in de Dockerfile gedaan
 
-"applying 'mvn package -DskipTests' on project..."
-./mvnw package -DskipTests
+#"setting up maven wrapper..."
+#mvn -N wrapper:wrapper
+
+#"applying 'mvn package -DskipTests' on project..."
+#./mvnw package -DskipTests
 "copying docker-compose and Dockerfile from C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts..."
 if($jdk -eq 21)
 {
