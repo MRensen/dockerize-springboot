@@ -18,6 +18,21 @@ services:
     volumes:
       - /tmp/uploads:/uploads
       - ./src:/src
+  kc:
+    image: quay.io/keycloak/keycloak:26.5.3
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 9090
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: [ "start-dev", "--http-port", "9090", "--https-port", "9443", "--import-realm"]
+    volumes:
+      - ./kc:/opt/keycloak/data/import
+    ports:
+      - "9090:9090"
+      - "9443:9443"
   db:
       image: mysql
       restart: always

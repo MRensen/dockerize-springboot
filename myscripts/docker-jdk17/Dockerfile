@@ -13,6 +13,9 @@ WORKDIR /app
 COPY pom.xml /app
 COPY src /app/src
 
+#Copy the kc export
+COPY src/main/resources /app/kc
+
 # Package the application using Maven (compile and build)
 RUN mvn clean package -DskipTests
 
