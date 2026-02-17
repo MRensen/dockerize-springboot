@@ -1,10 +1,14 @@
 # version 4.0
 # 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\dockerize.ps1'
-# Use the Eclipse Temurin base image with JDK 17 (Alpine version)
+# Use the Eclipse Temurin base image with JDK 21 (Alpine version)
 FROM eclipse-temurin:21-jdk-alpine
 
 # Install Maven
 RUN apk add --no-cache maven
+# Install curl
+RUN apk --no-cache add curl
+# Install jq
+RUN apk --no-cache add jq
 
 # Set the working directory
 WORKDIR /app
@@ -12,6 +16,13 @@ WORKDIR /app
 # Copy the Maven project files to the container
 COPY pom.xml /app
 COPY src /app/src
+
+#Copy the kc export
+COPY kc /app/kc
+
+#Copy the entrypoint script
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 # Package the application using Maven (compile and build)
 RUN mvn clean package -DskipTests
@@ -21,8 +32,5 @@ EXPOSE 8080
 EXPOSE 5432
 EXPOSE 3307
 
-## Copy the built JAR file to the container
-#COPY target/*.jar application.jar
-
 # Set the entry point to run the application
-ENTRYPOINT ["sh", "-c", "java -jar target/*.jar"]
+ENTRYPOINT ["/app/entrypoint.sh"]

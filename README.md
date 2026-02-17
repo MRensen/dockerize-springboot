@@ -1,33 +1,46 @@
-Version 3.4
+Version 5.0
 
 # INSTALLATIE:
 
 1. Zorg dat java en maven op je computer geinstalleerd staan en op je PATH staan. (Instructies:[java](https://www.java.com/nl/download/help/path.html), [maven](https://www.baeldung.com/install-maven-on-windows-linux-mac))
 2. Download Docker Desktop
-3. plak de 'myscripts'-map in _windows\system32\windowspowershell\v1.0_
-4. open profile.ps1 in _windows\system32\windowspowershell\v1.0_
-5. voeg de regel toe: `Set-Alias -Name dockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\dockerize.ps1'
+3. Kopieer de 'myscripts'-map naar `windows\system32\windowspowershell\v1.0`
+4. Open `windows\system32\windowspowershell\v1.0\profile.ps1` (als profile.ps1 niet bestaat, moet je die maken)
+5. Voeg daarin de regel toe: `Set-Alias -Name dockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\dockerize.ps1'
 6. (Optioneel) Voeg ook `Set-Alias -Name dedockerize -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\dedockerize.ps1'` toe aan profile.ps1.
-7. (Optioneel) Voeg ook `Set-Alias -Name authreset -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\authreset.ps1`
-7. herstart powershell
+7. Herstart powershell
 
 # GEBRUIK:
 
-1. open powershell in de root folder van een SpringBoot project (zie ook [bonus](#BONUS))
+dockerize [-options]
+
+1. Open powershell in de root folder van een SpringBoot project (zie ook [bonus](#BONUS))
   (de map waar o.a. pom.xml en 'src' in staan)
 2. type: 'dockerize' (sluit het powershell venster niet)
 3. Voeg optioneel een parameter toe voor de JDK, zoals 'dockerize -jdk 21'. Op dit moment wordt alleen JDK 21 ondersteund en JDK 17 is de default.
    Voeg optioneel een parameter to voor het SQL dialect, zoals 'dockerize -sql mysql'. Op dit moment wordt alleen MySql en PostgreSql ondersteund, deze laatste is de default.
    Je kunt ook beide flags toevoegen.
-4. Vouw in Docker Desktop de nieuw gemaakte collectie open, ga naar de 'app' container. 
-  Wanneer het icoontje van deze container groen is, is de applicatie gestart. Tevens kun je hier de log van de Spring Boot applicatie zien.
-5. Ga naar de 'db' container en klik het 'terminal' tabblad. Hier kun je met psql de database uitlezen. 
 
-- Het "dedockerize" commando is een makkelijke manier om je docker instance weer af te sluiten als je klaar bent. 
-Dit doe je door een powershell venster te openen in de root map van het project (of het zelfde powershell venster dat je voor "dockerize" gebruikt hebt) en daar "dedockerize" uit te voeren.
+- Het "dedockerize" commando is een makkelijke manier om je docker instance weer af te sluiten als je klaar bent.
+Dit doe je door een powershell venster te openen in de root map van het project (of het zelfde powershell venster dat je voor "dockerize" gebruikt hebt) en daar "dedockerize" uit te voeren. "dedockerize" is een alias voor "docker compose down"
+
+# Options 
+
+_dikgedrukt zijn default argumenten_
+
+- sql [__postgresql__|mysql] 
+	Stelt de gebruikte database in. Postgres is de default.
+- jdk [__17__|21|25]
+	Stelt de gebruikte jdk in. 17 is de default
+- kc 
+	Geeft aan of je keycloak gebruikt in het project. Dit is een boolean switch en behoeft geen argument. Default is false.
 
 
 # PSQL
+
+  Om de database te bekijken kun je psql gebruiken. 
+  Dit kan in de terminal met `docker exec -it db psql` of in de Docker Desktop via het "exec" tabblad.
+
   Log in bij psql met: 
   
 	`psql -U postgres`
@@ -57,6 +70,7 @@ Dit doe je door een powershell venster te openen in de root map van het project 
 Then you can run SQL statements, e.g., SELECT * FROM my_table;(Note: a statement must be terminated with semicolon ;)
   - `\q` quit psql
 
+
 # AFSLUITEN:
 
 1. In hetzelfde PowerShell venster waar je 'dockerize' hebt getypt, type je nu:
@@ -64,6 +78,8 @@ Then you can run SQL statements, e.g., SELECT * FROM my_table;(Note: a statement
 2. De container is afgesloten, je kunt het PowerShell venster nu sluiten.
 
 # BONUS
+(Deze bonus is niet relevant voor Windows 11 gebruikers met de Terminal app)
+
 Een makkelijke manier om Powershell te openen in de root folder van een springboot project is door er een context menu item voor te maken.
 
 1. Type `Windows + R` 
@@ -75,6 +91,7 @@ Een makkelijke manier om Powershell te openen in de root folder van een springbo
 7. In de nieuwe "command" key, dubbelklik op de "(Default)" entry en zet die waarde naar `powershell.exe -noexit -command Set-Location -literalPath '%V'`
 
 Wanneer je nu een nieuwe map opent en `shift + rechter muisknop` doet, dan zie je als het goed is de optie "Open PowerShell here"
+
 
 # TROUBLESHOOTING
 
@@ -88,3 +105,4 @@ Projecten met hardcoded file paths crashen hierdoor niet meer.
 - v3.4: Het ps1 script geeft nu de optie om zowel jdk als sql aan te passen.
         "authreset" verwijderd
 - V4.0: Initialisatie van Maven gebeurt nu in de dockerfile in plaats van lokaal. De installatie van Maven op je lokale pc is daarmee wellicht niet meer nodig.
+- v5.0: Het script ondersteunt nu KeyCloak

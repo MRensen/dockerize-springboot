@@ -1,7 +1,7 @@
 # version 4.0
 # 'C:\Windows\System32\WindowsPowerShell\v1.0\MyScripts\dockerize.ps1'
-# Use the Eclipse Temurin base image with JDK 17 (Alpine version)
-FROM eclipse-temurin:17-jdk-alpine
+# Use the Eclipse Temurin base image with JDK 25 (Alpine version)
+FROM eclipse-temurin:25-jdk-alpine
 
 # Install Maven
 RUN apk add --no-cache maven
