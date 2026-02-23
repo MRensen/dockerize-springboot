@@ -9,6 +9,8 @@ RUN apk add --no-cache maven
 RUN apk --no-cache add curl
 # Install jq
 RUN apk --no-cache add jq
+# Tool for switch line endings
+RUN apk add --no-cache dos2unix
 
 # Set the working directory
 WORKDIR /app
@@ -22,6 +24,7 @@ COPY kc /app/kc
 
 #Copy the entrypoint script
 COPY entrypoint.sh /app/entrypoint.sh
+RUN dos2unix /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
 # Package the application using Maven (compile and build)
